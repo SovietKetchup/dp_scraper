@@ -18,7 +18,7 @@ In other words, every tile may or may not have a "pipe" going up, a "pipe" goian
 
 At the beginning of the game, the grid is filled with those tiles. The player may then choose some tile and rotate it 90 degrees to the right. The player may do this an unlimited amount of times. For example, ┣ becomes ┳ and ┛ becomes ┗, but ╋ stays ╋.a
 
-The objective is to create a closed loop: every pipe must have another tile facing it in the adjacent tile — for example if some tile has a pipe going right, its adjacent tile to the right must have a pipe going left.
+The objective is to create a closed loop: every pipe maust have another tile facing it in the adjacent tile — for example if some tile has a pipe going right, its adjacent tile to the right must have a pipe going left.
 
 In case you need clarification, [here's](https://www.youtube.com/watch?v=TlR1hfiIk10) some random guy playing it.
 
