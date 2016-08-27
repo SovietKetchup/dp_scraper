@@ -28,7 +28,7 @@
           "report_reasons": null,
           "author": "G33kDude",
           "media": null,
-          "score": 44,
+          "score": 45,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -63,7 +63,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 44
+          "ups": 45
         }
       },
       {
@@ -91,7 +91,7 @@
           "report_reasons": null,
           "author": "jnazario",
           "media": null,
-          "score": 77,
+          "score": 72,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -126,7 +126,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 77
+          "ups": 72
         }
       },
       {
@@ -154,7 +154,7 @@
           "report_reasons": null,
           "author": "jnazario",
           "media": null,
-          "score": 57,
+          "score": 54,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -189,7 +189,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 57
+          "ups": 54
         }
       },
       {
@@ -217,7 +217,7 @@
           "report_reasons": null,
           "author": "jnazario",
           "media": null,
-          "score": 76,
+          "score": 77,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -252,7 +252,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 76
+          "ups": 77
         }
       },
       {
@@ -280,7 +280,7 @@
           "report_reasons": null,
           "author": "fvandepitte",
           "media": null,
-          "score": 75,
+          "score": 76,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -315,7 +315,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 75
+          "ups": 76
         }
       },
       {
@@ -343,7 +343,7 @@
           "report_reasons": null,
           "author": "fvandepitte",
           "media": null,
-          "score": 86,
+          "score": 89,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -378,7 +378,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 86
+          "ups": 89
         }
       },
       {
@@ -406,7 +406,7 @@
           "report_reasons": null,
           "author": "Godspiral",
           "media": null,
-          "score": 43,
+          "score": 44,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -441,7 +441,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 43
+          "ups": 44
         }
       },
       {
@@ -469,7 +469,7 @@
           "report_reasons": null,
           "author": "fvandepitte",
           "media": null,
-          "score": 126,
+          "score": 123,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -504,7 +504,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 126
+          "ups": 123
         }
       },
       {
@@ -532,7 +532,7 @@
           "report_reasons": null,
           "author": "fvandepitte",
           "media": null,
-          "score": 15,
+          "score": 16,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -567,7 +567,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 15
+          "ups": 16
         }
       },
       {
@@ -595,7 +595,7 @@
           "report_reasons": null,
           "author": "fvandepitte",
           "media": null,
-          "score": 70,
+          "score": 73,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -630,7 +630,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 70
+          "ups": 73
         }
       },
       {
@@ -658,7 +658,7 @@
           "report_reasons": null,
           "author": "fvandepitte",
           "media": null,
-          "score": 74,
+          "score": 73,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -693,7 +693,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 74
+          "ups": 73
         }
       },
       {
@@ -784,7 +784,7 @@
           "report_reasons": null,
           "author": "Godspiral",
           "media": null,
-          "score": 28,
+          "score": 30,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -819,7 +819,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 28
+          "ups": 30
         }
       },
       {
@@ -847,7 +847,7 @@
           "report_reasons": null,
           "author": "Godspiral",
           "media": null,
-          "score": 44,
+          "score": 41,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -882,7 +882,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 44
+          "ups": 41
         }
       },
       {
@@ -910,7 +910,7 @@
           "report_reasons": null,
           "author": "jnazario",
           "media": null,
-          "score": 121,
+          "score": 123,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -945,7 +945,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 121
+          "ups": 123
         }
       },
       {
@@ -973,7 +973,7 @@
           "report_reasons": null,
           "author": "Cosmologicon",
           "media": null,
-          "score": 41,
+          "score": 42,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -1008,7 +1008,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 41
+          "ups": 42
         }
       },
       {
@@ -1036,7 +1036,7 @@
           "report_reasons": null,
           "author": "Cosmologicon",
           "media": null,
-          "score": 49,
+          "score": 47,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -1071,7 +1071,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 49
+          "ups": 47
         }
       },
       {
@@ -1099,7 +1099,7 @@
           "report_reasons": null,
           "author": "Cosmologicon",
           "media": null,
-          "score": 88,
+          "score": 84,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -1134,7 +1134,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 88
+          "ups": 84
         }
       },
       {
@@ -1162,7 +1162,7 @@
           "report_reasons": null,
           "author": "jnazario",
           "media": null,
-          "score": 70,
+          "score": 66,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -1197,7 +1197,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 70
+          "ups": 66
         }
       },
       {
@@ -1225,7 +1225,7 @@
           "report_reasons": null,
           "author": "jnazario",
           "media": null,
-          "score": 38,
+          "score": 41,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -1260,7 +1260,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 38
+          "ups": 41
         }
       },
       {
@@ -1351,7 +1351,7 @@
           "report_reasons": null,
           "author": "jnazario",
           "media": null,
-          "score": 40,
+          "score": 38,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -1386,7 +1386,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 40
+          "ups": 38
         }
       },
       {
@@ -1414,7 +1414,7 @@
           "report_reasons": null,
           "author": "Godspiral",
           "media": null,
-          "score": 45,
+          "score": 47,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -1449,7 +1449,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 45
+          "ups": 47
         }
       },
       {
@@ -1540,7 +1540,7 @@
           "report_reasons": null,
           "author": "Godspiral",
           "media": null,
-          "score": 38,
+          "score": 39,
           "approved_by": null,
           "over_18": false,
           "hidden": false,
@@ -1575,7 +1575,7 @@
           ],
           "visited": false,
           "num_reports": null,
-          "ups": 38
+          "ups": 39
         }
       },
       {
