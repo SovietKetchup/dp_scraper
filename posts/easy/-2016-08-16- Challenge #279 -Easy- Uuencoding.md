@@ -24,7 +24,7 @@ A uuencoded file starts with a header line of the form:
 
 Each data line uses the format:
 
-    &lt;length character&gt;&lt;formatted characters&gt;&lt;newline&gt;
+    &lt;length character&gt;&lt;asdasdasdasdformatted characters&gt;&lt;newline&gt;
 
 &lt;length character&gt; is a character indicating the number of data bytes which have been encoded on that line. This is an ASCII character determined by adding 32 to the actual byte count, with the sole exception of a grave accent "`" (ASCII code 96) signifying zero bytes. All data lines except the last (if the data was not divisible by 45), have 45 bytes of encoded data (60 characters after encoding). Therefore, the vast majority of length values is 'M', (32 + 45 = ASCII code 77 or "M").
 
@@ -58,7 +58,7 @@ a string containing uuencoded input.
 Input: Cat
 
 Output:
- 
+
     begin 644 cat.txt
     #0V%T
     `
