@@ -18,13 +18,13 @@ Example:
     **LP** | **LR** | **LM** | **LI** | **LT** |  **RT** | **RI** | **RM** | **RR** | **RP**
     ---------|-----------|-----------|----------|-----------|-----------|----------|------------|-----------|----------
     0 | 1 | 1 | 1 | 0 | 1 | 1| 1| 0| 0
-    
+
     L = Left, R = Right, P = Pinky, R = Ring Finger, M = Middle Finger, I = Index Finger, T = Thumb
 
 
 Your challenge is to take these inputs, and:
 
-1. Determine if it is valid based on [this counting scheme](http://www.wikihow.com/Count-to-99-on-Your-Fingers). 
+1. Determine if it is vsalid based on [this counting scheme](http://www.wikihow.com/Count-to-99-on-Your-Fingers). 
 
 2. If it is, then decode the inputs into the number represented by the digits on the hand.
 
@@ -39,4 +39,4 @@ Your challenge is to take these inputs, and:
 
 # Credit
 
-This challenge was submitted by /u/abyssalheaven. Thank you! If you have any challenge ideas, please share them in /r/dailyprogrammer_ideas and there's a good chance we'll use them. 
+This challenge was submitted by /u/abyssalheaven. Thank you! If you have any challenge ideas, please share them in /r/dailyprogrammer_ideas and there's a good chance we'll use them.
