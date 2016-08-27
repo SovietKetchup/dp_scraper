@@ -1,6 +1,13 @@
 # Scrape posts from /r/dailyprogrammer
 # SovietKetchup
-# v0.4.1
+# v0.5.0
+
+# # # # # # # # # # # # # # # # # # # #
+#https://www.reddit.com/r/dailyprogrammer.json?after=aftervalue
+#https://www.reddit.com/r/dailyprogrammer.json?limit=200
+#https://www.reddit.com/r/dailyprogrammer.json?limit=200&after=aftervalue
+# # # # # # # # # # # # # # # # # # # #
+
 
 require 'net/http'
 require 'json'
@@ -28,7 +35,7 @@ end
 #   File.open("js/pretty_posts_simple.txt", 'w') {|f| f.write(s[6]) }
 # end
 
-raw_json = get("https://www.reddit.com/r/dailyprogrammer.json").body
+raw_json = get("https://www.reddit.com/r/dailyprogrammer.json?limit=25").body
 raw_data = JSON.parse(raw_json)
 pretty_data = JSON.pretty_generate(raw_data)
 raw_posts = (raw_data["data"]["children"])
@@ -56,15 +63,7 @@ pretty_posts_simple = JSON.pretty_generate(raw_posts_simple)
 
 raw_posts_simple.each do |post|
 
-  challenge = "# DETAILS
-### Title      : #{post[:title]}
-### URL        : #{post[:url]}
-### Perma-Link : #{post[:permalink]}
-### Score      : #{post[:score].to_s}
-### Comments   : #{post[:comments].to_s}
-
-# DESCRIPTION
-#{post[:description]}"
+  challenge = "# DETAILS\n### Title      : #{post[:title]}\n### URL        : #{post[:url]}\n### Perma-Link : #{post[:permalink]}\n### Score      : #{post[:score].to_s}\n### Comments   : #{post[:comments].to_s}\n\n# DESCRIPTION\n#{post[:description]}"
 
   title = post[:title]
 
@@ -75,7 +74,7 @@ raw_posts_simple.each do |post|
   elsif title.include? "[Hard]"
     location = "posts/hard/"
   elsif title.include? "[Weekly"
-    location = "posts/weekly"
+    location = "posts/weekly/"
   else
     location = "posts/other/"
   end
