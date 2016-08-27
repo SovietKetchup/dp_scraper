@@ -1,6 +1,6 @@
 # Scrape posts from /r/dailyprogrammer
 # SovietKetchup
-# v0.3.0
+# v0.4.0
 
 require 'net/http'
 require 'json'
@@ -17,17 +17,16 @@ def get url
   response = http.request(request)
 end
 
-
-stages = []
-def write_stages s
-  File.open("js/raw_json.json", 'w')           {|f| f.write(s[0]) }
-  File.open("js/raw_data.json", 'w')           {|f| f.write(s[1]) }
-  File.open("js/pretty_data.txt", 'w')         {|f| f.write(s[2]) }
-  File.open("js/raw_posts.json", 'w')          {|f| f.write(s[3]) }
-  File.open("js/pretty_posts.txt", 'w')        {|f| f.write(s[4]) }
-  File.open("js/raw_posts_simple.json", 'w')   {|f| f.write(s[5]) }
-  File.open("js/pretty_posts_simple.txt", 'w') {|f| f.write(s[6]) }
-end
+# stages = []
+# def write_stages s
+#   File.open("js/raw_json.json", 'w')           {|f| f.write(s[0]) }
+#   File.open("js/raw_data.json", 'w')           {|f| f.write(s[1]) }
+#   File.open("js/pretty_data.txt", 'w')         {|f| f.write(s[2]) }
+#   File.open("js/raw_posts.json", 'w')          {|f| f.write(s[3]) }
+#   File.open("js/pretty_posts.txt", 'w')        {|f| f.write(s[4]) }
+#   File.open("js/raw_posts_simple.json", 'w')   {|f| f.write(s[5]) }
+#   File.open("js/pretty_posts_simple.txt", 'w') {|f| f.write(s[6]) }
+# end
 
 raw_json = get("https://www.reddit.com/r/dailyprogrammer.json").body
 raw_data = JSON.parse(raw_json)
@@ -55,7 +54,41 @@ end
 
 pretty_posts_simple = JSON.pretty_generate(raw_posts_simple)
 
-# Print each stage to files
+raw_posts_simple.each do |post|
+
+  challenge = "# DETAILS
+### Title      : #{post[:title]}
+### URL        : #{post[:url]}
+### Perma-Link : #{post[:permalink]}
+### Score      : #{post[:score].to_s}
+### Comments   : #{post[:comments].to_s}
+
+# DESCRIPTION
+#{post[:description]}"
+
+  if post[:title].include? "[Easy"
+    location = "posts/easy/"
+  elsif post[:title].include? "[Intermediate]"
+    location = "posts/intermediate/"
+  elsif post[:title].include? "[Hard]"
+    location = "posts/hard/"
+  else
+    location = "posts/other/"
+  end
+
+  title = post[:title]
+
+  # Make the filename characters Windows friendly
+  title.tr!("*", "-"); title.tr!(".", "-"); title.tr!("/", "-")
+  title.tr!("\\", "-"); title.tr!("[", "-"); title.tr!("]", "-")
+  title.tr!(":", "-"); title.tr!(";", "-"); title.tr!("|", "-")
+  title.tr!("=", "-"); title.tr!("=", "-"); title.tr!(",", "-")
+
+  File.open(location + title + ".md", 'w+') {|f| f.write(challenge) }
+
+end
+
+# Print each stage to files (un)comment to (not) run
 # stages = [raw_json]
 # stages << raw_data
 # stages << pretty_data
