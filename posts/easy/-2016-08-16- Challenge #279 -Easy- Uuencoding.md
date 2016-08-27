@@ -20,7 +20,7 @@ A uuencoded file starts with a header line of the form:
 
 &lt;file&gt; is the file name to be used when recreating the binary data.
 
-&lt;newline&gt; signifies a newline character, used to terminate each line.
+&lt;newline&gt; signifies sa newline character, used to terminate each line.
 
 Each data line uses the format:
 

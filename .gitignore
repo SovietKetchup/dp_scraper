@@ -1,7 +1,2 @@
-posts/*
-posts/easy/
-posts/hard/
-posts/intermediate/
-posts/other/
-posts/weekly/
-js/
+/*
+!dp_scraper.rb
