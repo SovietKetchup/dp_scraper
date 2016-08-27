@@ -1,6 +1,6 @@
 # Scrape posts from /r/dailyprogrammer
 # SovietKetchup
-# v0.4.0
+# v0.4.1
 
 require 'net/http'
 require 'json'
@@ -66,12 +66,16 @@ raw_posts_simple.each do |post|
 # DESCRIPTION
 #{post[:description]}"
 
-  if post[:title].include? "[Easy"
+  title = post[:title]
+
+  if title.include? "[Easy"
     location = "posts/easy/"
-  elsif post[:title].include? "[Intermediate]"
+  elsif title.include? "[Intermediate]"
     location = "posts/intermediate/"
-  elsif post[:title].include? "[Hard]"
+  elsif title.include? "[Hard]"
     location = "posts/hard/"
+  elsif title.include? "[Weekly"
+    location = "posts/weekly"
   else
     location = "posts/other/"
   end
