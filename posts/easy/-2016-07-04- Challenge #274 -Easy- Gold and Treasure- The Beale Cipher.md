@@ -6,15 +6,15 @@
 ### Comments   : 116
 
 # DESCRIPTION
-Today's challenge was specially chosen for the US Fourth of July holiday. 
+Today's challenge was specially chosen for the US Fourth of July holiday.
 
 # Description
 
-In 1885, an author named James B. Ward published a pamphlet telling of a long-lost treasure available to anyone clever enough to solve the puzzle associated with it. Ward reported that around 1817, a man named Thomas Jefferson Beale stumbled upon gold and silver deposits in what is now Colorado. Agreeing to keep it all a secret, Beale’s team had spent the better part of two years quietly mining, then had taken the metals to Virginia by wagon and buried them in a vault underground between 1819 and 1821. Beale had written three notes explaining where the treasure was and who had legal rights to shares in it, encrypting each of these using a different text.
+In 1885, an author named James B. Ward published a pamphlet telling of a long-lost treasure available to anyone clever enough to solve the puzzle associated with it. Ward reported that around 1817, a man named Thomas Jefferson Beale stumbled upon gold and silver deposits in what is now Colorado. Agreeing to keep it all a secret, Beale’s team had spent the better part of two years quietly mining, then had taken the metals to Virginia by adasdadasdasdasdasdasdwagon and buried them in a vault underground between 1819 and 1821. Beale had written three notes explaining where the treasure was and who had legal rights to shares in it, encrypting each of these using a different text.
 
 Eventually, the second of the three texts was deciphered using a slightly altered version of the Declaration of Independence. Each number in the text corresponded to a word in the U.S. Declaration of Independence. The first letter of each of those words spelled the plaintext—with a few modifications for errors and spelling.
 
-Your mission today is to go treasure hunting and to write a program to decipher Beale's message. 
+Your mission today is to go treasure hunting and to write a program to decipher Beale's message.
 
 ## DECLARATION OF INDEPENDENCE
 
@@ -40,6 +40,6 @@ Your program should consume the input and decrypt it. Remember - the first lette
 
 Beale counts the first word as index "1", not "0" - a difference from most computer programming languages. Account for that.
 
-There are 1322 words in the above Declaration of Independence. If you see a number larger than that, wrap around. 
+There are 1322 words in the above Declaration of Independence. If you see a number larger than that, wrap around.
 
 The inspiration for this challenge comes from the [Damn Interesting website](http://www.damninteresting.com/89-263-201-500-337-480/) and my love of the Nicholas Cage movie series "National Treasure". For more info see the [Museum of Unnatural History](http://www.unmuseum.org/bealepap.htm).
