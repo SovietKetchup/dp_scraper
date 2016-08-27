@@ -16,7 +16,7 @@
 
 In other words, every tile may or may not have a "pipe" going up, a "pipe" goiang right, a "pipe" going down, and a "pipe" going left. All combinations of those are valid, legal tiles.
 
-At the beginning of the game, the grid is filled with those tiles. The player may then choose some tile and rotate it 90 degrees to the right. The player may do this an unlimited amount of times. For example, ┣ becomes ┳ and ┛ becomes ┗, but ╋ stays ╋.
+At the beginning of the game, the grid is filled with those tiles. The player may then choose some tile and rotate it 90 degrees to the right. The player may do this an unlimited amount of times. For example, ┣ becomes ┳ and ┛ becomes ┗, but ╋ stays ╋.a
 
 The objective is to create a closed loop: every pipe must have another tile facing it in the adjacent tile — for example if some tile has a pipe going right, its adjacent tile to the right must have a pipe going left.
 
