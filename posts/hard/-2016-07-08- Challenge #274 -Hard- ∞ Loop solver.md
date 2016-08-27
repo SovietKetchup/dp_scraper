@@ -14,7 +14,7 @@
 
 (If some of the Unicode characters aren't shown, [here](http://i.imgur.com/PWyeW5r.png) is a screenshot of this paragraph).
 
-In other words, every tile may or may not have a "pipe" going up, a "pipe" going right, a "pipe" going down, and a "pipe" going left. All combinations of those are valid, legal tiles.
+In other words, every tile may or may not have a "pipe" going up, a "pipe" goiang right, a "pipe" going down, and a "pipe" going left. All combinations of those are valid, legal tiles.
 
 At the beginning of the game, the grid is filled with those tiles. The player may then choose some tile and rotate it 90 degrees to the right. The player may do this an unlimited amount of times. For example, ┣ becomes ┳ and ┛ becomes ┗, but ╋ stays ╋.
 
