@@ -1,6 +1,6 @@
 # Scrape posts from /r/dailyprogrammer
 # SovietKetchup
-# v1.0.0
+# v1.1.0
 
 # # # # # # # # # # # # # # # # # # # #
 #https://www.reddit.com/r/dailyprogrammer.json?
@@ -13,6 +13,7 @@
 require 'net/http'
 require 'json'
 require 'colorize'
+require 'date'
 
 # Sleep to prevent spamming of Reddit's
 sleep(2)
@@ -41,26 +42,26 @@ count = 0
 
 while true do
 
-  raw_json = ""
-  raw_data = ""
-  pretty_data = ""
-  raw_posts = ""
-  pretty_posts = ""
-  posts_arr = ""
-  raw_posts_simple = ""
-  pretty_posts_simple = ""
-  c = 0
-  challenge = ""
-  location = ""
+  # raw_json = ""
+  # raw_data = ""
+  # pretty_data = ""
+  # raw_posts = ""
+  # pretty_posts = ""
+  # posts_arr = ""
+  # raw_posts_simple = ""
+  # pretty_posts_simple = ""
+  # c = 0
+  # challenge = ""
+  # loc = ""
 
   sleep(2)
 
-  5.times { puts count.to_s.red }
+  3.times { puts count.to_s.red }
 
   if count == 0
-    link = "https://www.reddit.com/r/dailyprogrammer.json?limit=1000"
+    link = "https://www.reddit.com/r/dailyprogrammer.json?limit=100"
   else
-    link = "https://www.reddit.com/r/dailyprogrammer.json?limit=1000&after=" + $next_link
+    link = "https://www.reddit.com/r/dailyprogrammer.json?limit=100&after=" + $next_link
 
     #raise link.inspect
   end
@@ -84,9 +85,10 @@ while true do
     po[:title] = post["title"]
     po[:url] = post["url"]
     po[:permalink] = post["permalink"]
-    po[:score] = post["score"]
-    po[:comments] = post["num_comments"]
+    po[:score] = post["score"].to_s
+    po[:comments] = post["num_comments"].to_s
     po[:description] = post["selftext"]
+    po[:time] = post["created_utc"]
     raw_posts_simple[c] = po
     c += 1
   end
@@ -96,33 +98,116 @@ while true do
   # Format each post
   raw_posts_simple.each do |post|
 
+    puts post[:title].blue
+
     # Format of final document
-    challenge = "# DETAILS\n### Title      : #{post[:title]}\n### URL        : #{post[:url]}\n### Perma-Link : #{post[:permalink]}\n### Score      : #{post[:score].to_s}\n### Comments   : #{post[:comments].to_s}\n\n# DESCRIPTION\n#{post[:description]}"
+    challenge = "# DETAILS\nTitle      : #{post[:title]}\nURL        : #{post[:url]}\nPerma-Link : #{post[:permalink]}\nScore      : #{post[:score]}\nComments   : #{post[:comments]}\n\n# DESCRIPTION\n#{post[:description]}"
 
-    title = post[:title]
+    title = post[:title].downcase
+    #raise post[:time].to_s.inspect
+    post_date = DateTime.strptime(post[:time].to_s, "%s")
+    post_date = post_date.to_s[0,10] + " "
 
-    # Decide file location
-    if title.include? "[Easy"
-      location = "posts/easy/"
-    elsif title.include? "[Intermediate]"
-      location = "posts/intermediate/"
-    elsif title.include? "[Hard]"
-      location = "posts/hard/"
-    elsif title.include? "[Weekly"
-      location = "posts/weekly/"
+    if title.include? "challenge"
+
+      # Get challenge number
+      if title.include? "#"
+        a = title.split("#")[1]
+        b = a.split(" ")[0]
+        number = "##{b}"
+      else
+        number = "#000"
+      end
+
+      # Challenge difficulty
+      if title.include? "easy"
+        loc = "easy"
+      elsif title.include? "intermediate"
+        loc = "intermediate"
+      elsif title.include? "hard" or title.include? "difficult"
+        loc = "hard"
+      else
+        loc = "other"
+      end
+
+      # Challenge title
+      if title.include? "]"
+        t = title.split("]")[-1]
+      else
+        t = "UNKNOWN"
+      end
+
+      doc_title = post_date + number + t
+
+    elsif title.include? "weekly"
+
+      loc = "weekly"
+
+      # Get challenge number
+      if title.include? "#"
+        a = title.split("#")[1]
+        b = a.split("]")[0]
+        number = "##{b}"
+      else
+        number = "#00"
+      end
+
+      # Challenge title
+      if title.include? "]"
+        t = title.split("]")[-1]
+      else
+        t = "UNKNOWN"
+      end
+
+      doc_title = post_date + number + t
+
+    elsif title.include? "meta" or title.include? "psa" or title.include? "mod post"
+
+      number = ""
+      loc = "meta"
+      t = title.split("]")[-1]
+
     else
-      location = "posts/other/"
+
+      loc = "other"
+      t = post[:title]
+      number = ""
+
     end
 
-    # Make the filename characters Windows friendly
-    title.tr!("*", "-"); title.tr!(".", "-"); title.tr!("/", "-")
-    title.tr!("\\", "-"); title.tr!("[", "-"); title.tr!("]", "-")
-    title.tr!(":", "-"); title.tr!(";", "-"); title.tr!("|", "-")
-    title.tr!("=", "-"); title.tr!("=", "-"); title.tr!(",", "-")
+    doc_title = post_date + number + t.capitalize
 
-    File.open(location + title + ".md", 'w+') {|f| f.write(challenge) }
+    doc_title.tr!("*", "-"); doc_title.tr!(".", "-"); doc_title.tr!("/", "-")
+    doc_title.tr!("\\", "-"); doc_title.tr!("[", "-"); doc_title.tr!("]", "-")
+    doc_title.tr!(":", "-"); doc_title.tr!(";", "-"); doc_title.tr!("|", "-")
+    doc_title.tr!("=", "-"); doc_title.tr!("=", "-"); doc_title.tr!(",", "-")
 
-    puts post[:title].green
+    puts (loc+"/"+doc_title).green
+
+    File.open("posts/" + loc + "/" + doc_title + ".md", 'w+') {|f| f.write(challenge) }
+
+    # # Decide file location
+    # if title.include? "[Easy"
+    #   location = "posts/easy/"
+    # elsif title.include? "[Intermediate]"
+    #   location = "posts/intermediate/"
+    # elsif title.include? "[Hard]"
+    #   location = "posts/hard/"
+    # elsif title.include? "[Weekly"
+    #   location = "posts/weekly/"
+    # else
+    #   location = "posts/other/"
+    # end
+    #
+    # # Make the filename characters Windows friendly
+    # title.tr!("*", "-"); title.tr!(".", "-"); title.tr!("/", "-")
+    # title.tr!("\\", "-"); title.tr!("[", "-"); title.tr!("]", "-")
+    # title.tr!(":", "-"); title.tr!(";", "-"); title.tr!("|", "-")
+    # title.tr!("=", "-"); title.tr!("=", "-"); title.tr!(",", "-")
+    #
+    #
+    #
+    # File.open(location + title + ".md", 'w+') {|f| f.write(challenge) }
 
   end
 
