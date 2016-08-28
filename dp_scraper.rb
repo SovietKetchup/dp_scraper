@@ -1,6 +1,6 @@
 # Scrape posts from /r/dailyprogrammer
 # SovietKetchup
-# v1.2.0
+# v1.3.0
 
 require 'net/http'
 require 'json'
@@ -65,7 +65,7 @@ while true do
   # Format each post
   raw_posts_simple.each do |post|
 
-    #puts post[:title].blue
+    puts post[:title].blue
 
     # Format of final document
     challenge = "# DETAILS\nTitle      : #{post[:title]}\nURL        : #{post[:url]}\nPerma-Link : #{post[:permalink]}\nScore      : #{post[:score]}\nComments   : #{post[:comments]}\n\n# DESCRIPTION\n#{post[:description]}"
@@ -75,13 +75,19 @@ while true do
     post_date = DateTime.strptime(post[:time].to_s, "%s")
     post_date = post_date.to_s[0,10] + " "
 
-    if title.include? "meta" or title.include? "psa" or title.include? "mod post" or title.include? "[ann]"
+    if (post_date == "2014-08-27 " and title.include? "contest")
 
       number = ""
-      loc = "meta"
+      loc = "challenges"
+      t = post[:title]
+
+    elsif title.include? "meta" or title.include? "psa" or title.include? "mod post" or title.include? "[ann]"
+
+      number = ""
+      loc = "other"
       t = title.split("]")[-1]
 
-    elsif title.include? "challenge"
+    elsif title.include? "challenge" or title.include? "challange"
 
       # Get challenge number
       if title.include? "#"
@@ -101,10 +107,9 @@ while true do
         loc = "hard"
       elsif title.include? "weekly"
         loc = "weekly"
-      elsif title.include? "week-long" and post_date != "2013-04-16 "
-        loc = "meta"
-      elsif title.include? "this isn't a challenge, just a thank you"
-      elsif title.include? "all" or title.include? "practical exercise" or title.include? "monthly" or title.include? "bonus"
+      elsif (title.include? "week-long" and post_date != "2013-04-16 ") or title.include? "this isn't a challenge, just a thank you"
+        loc = "other"
+      elsif title.include? "all" or title.include? "practical exercise" or title.include? "monthly" or title.include? "bonus" or (post_date == "2014-08-27 " and title.include? "contest")
         loc = "challenges"
       else
         loc = "other"
@@ -141,6 +146,12 @@ while true do
 
       doc_title = post_date + number + t
 
+    elsif title.include? "easy"
+
+      loc = "easy"
+      t = post[:title]
+      number = ""
+
     else
 
       loc = "other"
@@ -156,7 +167,7 @@ while true do
     doc_title.tr!(":", "-"); doc_title.tr!(";", "-"); doc_title.tr!("|", "-")
     doc_title.tr!("=", "-"); doc_title.tr!("=", "-"); doc_title.tr!(",", "-")
 
-    #puts (loc+"/"+doc_title).green
+    puts (loc+"/"+doc_title).green
 
     File.open("posts/" + loc + "/" + doc_title + ".md", 'w+') {|f| f.write(challenge) }
 
