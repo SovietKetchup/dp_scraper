@@ -1,6 +1,6 @@
 # Scrape posts from /r/dailyprogrammer
 # SovietKetchup
-# v1.3.0
+# v1.3.1
 
 require 'net/http'
 require 'json'
@@ -28,7 +28,7 @@ while true do
   1.times { puts count.to_s.red }
 
   if count == 0
-    link = "https://www.reddit.com/r/dailyprogrammer.json?limit=100"
+    link = "https://www.reddit.com/r/dailyprogrammer.json?limit    #raise post[:time].to_s.inspect=100"
   else
     link = "https://www.reddit.com/r/dailyprogrammer.json?limit=100&after=" + $next_link
   end
@@ -71,11 +71,10 @@ while true do
     challenge = "# DETAILS\nTitle      : #{post[:title]}\nURL        : #{post[:url]}\nPerma-Link : #{post[:permalink]}\nScore      : #{post[:score]}\nComments   : #{post[:comments]}\n\n# DESCRIPTION\n#{post[:description]}"
 
     title = post[:title].downcase
-    #raise post[:time].to_s.inspect
     post_date = DateTime.strptime(post[:time].to_s, "%s")
     post_date = post_date.to_s[0,10] + " "
 
-    if (post_date == "2014-08-27 " and title.include? "contest")
+    if (post_date == "2014-08-27 " and title.include? "contest") or post_date == "2016-02-11 "
 
       number = ""
       loc = "challenges"
