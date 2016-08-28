@@ -1,14 +1,6 @@
 # Scrape posts from /r/dailyprogrammer
 # SovietKetchup
-# v1.1.0
-
-# # # # # # # # # # # # # # # # # # # #
-#https://www.reddit.com/r/dailyprogrammer.json?
-#https://www.reddit.com/r/dailyprogrammer.json?after=aftervalue
-#https://www.reddit.com/r/dailyprogrammer.json?limit=200
-#https://www.reddit.com/r/dailyprogrammer.json?limit=200&after=aftervalue
-# # # # # # # # # # # # # # # # # # # #
-
+# v1.2.0
 
 require 'net/http'
 require 'json'
@@ -27,43 +19,18 @@ def get url
   response = http.request(request)
 end
 
-# stages = []
-# def write_stages s
-#   File.open("js/raw_json.json", 'w')           {|f| f.write(s[0]) }
-#   File.open("js/raw_data.json", 'w')           {|f| f.write(s[1]) }
-#   File.open("js/pretty_data.txt", 'w')         {|f| f.write(s[2]) }
-#   File.open("js/raw_posts.json", 'w')          {|f| f.write(s[3]) }
-#   File.open("js/pretty_posts.txt", 'w')        {|f| f.write(s[4]) }
-#   File.open("js/raw_posts_simple.json", 'w')   {|f| f.write(s[5]) }
-#   File.open("js/pretty_posts_simple.txt", 'w') {|f| f.write(s[6]) }
-# end
-
 count = 0
 
 while true do
 
-  # raw_json = ""
-  # raw_data = ""
-  # pretty_data = ""
-  # raw_posts = ""
-  # pretty_posts = ""
-  # posts_arr = ""
-  # raw_posts_simple = ""
-  # pretty_posts_simple = ""
-  # c = 0
-  # challenge = ""
-  # loc = ""
-
   sleep(2)
 
-  3.times { puts count.to_s.red }
+  1.times { puts count.to_s.red }
 
   if count == 0
     link = "https://www.reddit.com/r/dailyprogrammer.json?limit=100"
   else
     link = "https://www.reddit.com/r/dailyprogrammer.json?limit=100&after=" + $next_link
-
-    #raise link.inspect
   end
 
   raw_json = get(link).body
@@ -98,7 +65,7 @@ while true do
   # Format each post
   raw_posts_simple.each do |post|
 
-    puts post[:title].blue
+    #puts post[:title].blue
 
     # Format of final document
     challenge = "# DETAILS\nTitle      : #{post[:title]}\nURL        : #{post[:url]}\nPerma-Link : #{post[:permalink]}\nScore      : #{post[:score]}\nComments   : #{post[:comments]}\n\n# DESCRIPTION\n#{post[:description]}"
@@ -108,7 +75,13 @@ while true do
     post_date = DateTime.strptime(post[:time].to_s, "%s")
     post_date = post_date.to_s[0,10] + " "
 
-    if title.include? "challenge"
+    if title.include? "meta" or title.include? "psa" or title.include? "mod post" or title.include? "[ann]"
+
+      number = ""
+      loc = "meta"
+      t = title.split("]")[-1]
+
+    elsif title.include? "challenge"
 
       # Get challenge number
       if title.include? "#"
@@ -122,10 +95,17 @@ while true do
       # Challenge difficulty
       if title.include? "easy"
         loc = "easy"
-      elsif title.include? "intermediate"
+      elsif title.include? "intermediate" or title.include? "medium"
         loc = "intermediate"
       elsif title.include? "hard" or title.include? "difficult"
         loc = "hard"
+      elsif title.include? "weekly"
+        loc = "weekly"
+      elsif title.include? "week-long" and post_date != "2013-04-16 "
+        loc = "meta"
+      elsif title.include? "this isn't a challenge, just a thank you"
+      elsif title.include? "all" or title.include? "practical exercise" or title.include? "monthly" or title.include? "bonus"
+        loc = "challenges"
       else
         loc = "other"
       end
@@ -161,12 +141,6 @@ while true do
 
       doc_title = post_date + number + t
 
-    elsif title.include? "meta" or title.include? "psa" or title.include? "mod post"
-
-      number = ""
-      loc = "meta"
-      t = title.split("]")[-1]
-
     else
 
       loc = "other"
@@ -182,53 +156,11 @@ while true do
     doc_title.tr!(":", "-"); doc_title.tr!(";", "-"); doc_title.tr!("|", "-")
     doc_title.tr!("=", "-"); doc_title.tr!("=", "-"); doc_title.tr!(",", "-")
 
-    puts (loc+"/"+doc_title).green
+    #puts (loc+"/"+doc_title).green
 
     File.open("posts/" + loc + "/" + doc_title + ".md", 'w+') {|f| f.write(challenge) }
-
-    # # Decide file location
-    # if title.include? "[Easy"
-    #   location = "posts/easy/"
-    # elsif title.include? "[Intermediate]"
-    #   location = "posts/intermediate/"
-    # elsif title.include? "[Hard]"
-    #   location = "posts/hard/"
-    # elsif title.include? "[Weekly"
-    #   location = "posts/weekly/"
-    # else
-    #   location = "posts/other/"
-    # end
-    #
-    # # Make the filename characters Windows friendly
-    # title.tr!("*", "-"); title.tr!(".", "-"); title.tr!("/", "-")
-    # title.tr!("\\", "-"); title.tr!("[", "-"); title.tr!("]", "-")
-    # title.tr!(":", "-"); title.tr!(";", "-"); title.tr!("|", "-")
-    # title.tr!("=", "-"); title.tr!("=", "-"); title.tr!(",", "-")
-    #
-    #
-    #
-    # File.open(location + title + ".md", 'w+') {|f| f.write(challenge) }
 
   end
 
   count += 1
 end
-
-
-
-
-
-
-
-
-
-
-# # Print each stage to files (un)comment to (not) run
-# stages = [raw_json]
-# stages << raw_data
-# stages << pretty_data
-# stages << raw_posts
-# stages << pretty_posts
-# stages << raw_posts_simplified
-# stages << pretty_posts_simplified
-# write_stages(stages)
