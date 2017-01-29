@@ -1,6 +1,6 @@
 # Scrape posts from /r/dailyprogrammer
 # SovietKetchup
-# v1.3.1
+# v1.3.2
 
 require 'net/http'
 require 'json'
@@ -28,7 +28,7 @@ while true do
   1.times { puts count.to_s.red }
 
   if count == 0
-    link = "https://www.reddit.com/r/dailyprogrammer.json?limit    #raise post[:time].to_s.inspect=100"
+    link = "https://www.reddit.com/r/dailyprogrammer.json?limit"    #raise post[:time].to_s.inspect=100"
   else
     link = "https://www.reddit.com/r/dailyprogrammer.json?limit=100&after=" + $next_link
   end
